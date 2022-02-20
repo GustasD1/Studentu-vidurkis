@@ -1,6 +1,6 @@
 # Studentu-vidurkis
 
-Padarytos dvi versijos:
+Padarytos dvi versijos:<br>
 Pirmoji su masyvais<br>
 Antroji su vektoriais
 
