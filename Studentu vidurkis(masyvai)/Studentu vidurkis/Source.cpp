@@ -1,6 +1,9 @@
 #include <iostream>
 #include <iomanip>
 #include <string>
+#include <algorithm>
+#include <time.h>
+#include <stdlib.h>
 
 using std::cout;
 using std::cin;
@@ -46,19 +49,36 @@ int main() {
 
 }
 void skaitymas(data& temp, int & n) {
-	
+	int pas;
+	int r;
 	cout << "Iveskite studento varda" << endl;
 	cin >> temp.vardas;
 	cout << "Iveskite studento pavarde" << endl;
 	cin >> temp.pavarde;
 	cout << "Kiek studentas turi pazymiu" << endl; cin >> n;
-	for (int i = 0; i < n; i++) {
-		cout << "Iveskite " << i + 1 << " -a(i) pazymi";
-		cin >> temp.paz[i];
+	cout << "Ar norite jog pazymiai buti generuojami atsitiktinai? Jei taip iveskite 1, jei ne iveskite 0" << endl;
+	cin >> pas;
+	if (pas == 1) {
+		srand(time(NULL));
+		for (int i = 0; i < n; i++) {
+			r = rand() % 10 + 1;
+			temp.paz[i] = r;
+
+		}
+		r = rand() % 10 + 1;
+		temp.egz =(double) r;
 
 	}
-	cout << "Iveskite egzamino pazymi: ";
-	cin >> temp.egz;
+	if (pas == 0) {
+		for (int i = 0; i < n; i++) {
+			cout << "Iveskite " << i + 1 << " -a(i) pazymi";
+			cin >> temp.paz[i];
+
+		}
+
+		cout << "Iveskite egzamino pazymi: ";
+		cin >> temp.egz;
+	}
 
 }
 void isvedimas(data& temp, int n) {
@@ -77,21 +97,39 @@ void apskaiciavimas(data& temp, int n) {
 
 	//Galutinio balo skaiciavimas pagal mediana
 	int sk=0;
+	int s;
 	int laik = n;
 	if (n % 2 == 0) {
 		sk = 1; //patikrinam ar skaiciu imtis yra lygine ar nelygine, jei sk=1 tai lygine jei sk=0 tai nelygine
 	}
 	else sk = 0;
-		if (sk == 1) {
-			laik = laik / 2;
-			temp.mediana = (temp.paz[laik] + temp.paz[laik + 1]) / 2;
+	
+
+		for (int i = 0; i < n; i++)
+		{
+			for (int j = i + 1; j < n; j++)
+			{
+				if (temp.paz[i] > temp.paz[j])
+				{
+					s = temp.paz[i];
+					temp.paz[i] = temp.paz[j];
+					temp.paz[j] = s;
+				}
+			}
+		}
+
+
+
+	if (sk == 1) {
+		laik = laik / 2-1;
+		temp.mediana = ((double) temp.paz[laik] + (double) temp.paz[laik + 1]) / 2;
 			temp.rezultatasm = temp.mediana * 0.4 + 0.6 * temp.egz;
 
 		}
 		else {
-			laik = laik / 2 + 1 ;
+			laik = laik / 2;
 			
-			temp.rezultatasm = temp.paz[laik] * 0.4 + 0.6 * temp.egz;
+			temp.rezultatasm = (double) temp.paz[laik] * 0.4 + 0.6 * temp.egz;
 
 
 		}
