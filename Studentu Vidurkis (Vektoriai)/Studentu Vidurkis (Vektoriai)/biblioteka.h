@@ -20,7 +20,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <random>
+#include <chrono>
 
+using namespace std::chrono; 
 using std::cout;
 using std::cin;
 using std::string;
