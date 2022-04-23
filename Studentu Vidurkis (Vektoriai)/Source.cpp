@@ -11,6 +11,7 @@ int main() {
 	int n;
 	int sk;
 	int a;
+	auto startas = high_resolution_clock::now();
 	cout << "Ar norite nuskaityti duomenis is failo, 1-taip, 0-ne, jei norite kad butu sugeneruotas atsitiktinis failas - 2" << std::endl;
 	cin >> a;
 	while (!cin) {
@@ -27,9 +28,8 @@ int main() {
 		auto start = high_resolution_clock::now();
 		generacija(sarasas);
 		auto end = high_resolution_clock::now();
-		duration<double> diff = end-start;
+		duration<double> diff = end - start;
 		cout << "Duomenu generacija uztruko " << diff.count() <<"s"<< std::endl;
-		FailoIsvedimas(sarasas);
 		start = high_resolution_clock::now();
 		FailoIsvedimas(sarasas);
 		end = high_resolution_clock::now();
@@ -63,5 +63,9 @@ int main() {
 		}
 		sarasas.clear();
 	}
+
+	auto endas = high_resolution_clock::now();
+	duration<double> differencija = endas - startas;
+	cout<<"visos programos veikimo laikas "<< differencija.count() << "s" << std::endl;
 
 }
