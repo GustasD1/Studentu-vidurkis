@@ -39,6 +39,45 @@ Buvo atlikti spartos testavimai su 1000, 10000, 100000, 1000000, 10000000 failai
 | -------------------- | ---- | ----- | ----- | ------- | -------- |
 |Duomenų nuskaitymas   |0.008s| 0.036s | 0.28s | 2.91s | 28.79s |
 |Studentų rūšiavimas   |0.00016s| 0.0019s | 0.02s | 0.23s | 2.33s |
+ 
+  Deque<br>
+| Dydis                | 1000 | 10000 | 100000 | 1000000 | 10000000 |
+| -------------------- | ---- | ----- | ----- | ------- | -------- |
+|Duomenų nuskaitymas   |0.007s| 0.032s | 0.29s | 2.81s | 27.8s |
+|Studentų rūšiavimas   |0.00056s| 0.0015s | 0.018s | 0.18s | 1.9s |
+ 
+  List<br>
+| Dydis                | 1000 | 10000 | 100000 | 1000000 | 10000000 |
+| -------------------- | ---- | ----- | ----- | ------- | -------- |
+|Duomenų nuskaitymas   |0.009s| 0.031s | 0.27s | 2.96s | 28.05s |
+|Studentų rūšiavimas   |0.00019s| 0.0013s | 0.015s | 0.16s | 1.51s |
+ 
+ 
+ (v1.0)
+ 
+ v0.5 studentų skirstymas buvo padarytas pagal pirma strategiją, kad buvo sukūrti du nauji to paties tipo konteineriai<br>
+ v1.0 buvo realizuota kita strategija, pagal kurią kuriamas tik vienas naujas konteineris o iš pirmo konteinerio ištrinami seni duomenys<br>
+ padarytas makefile
+ 
+ Vėl buvo atlikta spartos analizė
+ 
+  Vektorius<br>
+| Dydis                | 1000 | 10000 | 100000 | 1000000 | 10000000 |
+| -------------------- | ---- | ----- | ----- | ------- | -------- |
+|Duomenų nuskaitymas   |0.007s| 0.033s | 0.29s | 2.89s | 28.75s |
+|Studentų rūšiavimas   |0.000076s| 0.0008s | 0.01s | 0.09s | 0.97s |
+ 
+  Deque<br>
+| Dydis                | 1000 | 10000 | 100000 | 1000000 | 10000000 |
+| -------------------- | ---- | ----- | ----- | ------- | -------- |
+|Duomenų nuskaitymas   |0.009s| 0.032s | 0.29s | 2.83s | 27.9s |
+|Studentų rūšiavimas   |0.000073s| 0.0008s | 0.009s | 0.09s | 0.89s |
+ 
+  List<br>
+| Dydis                | 1000 | 10000 | 100000 | 1000000 | 10000000 |
+| -------------------- | ---- | ----- | ----- | ------- | -------- |
+|Duomenų nuskaitymas   |0.011s| 0.032s | 0.29s | 2.86s | 28s |
+|Studentų rūšiavimas   |0.00014s| 0.0009s | 0.013s | 0.12s | 1.3s |
 
 
 
