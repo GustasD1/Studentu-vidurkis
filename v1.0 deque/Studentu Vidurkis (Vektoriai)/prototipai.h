@@ -15,7 +15,7 @@ void skaitymas(deque<data>& temp);
 void FailoIsvedimas(deque<data>& temp, deque<data>& temp2);
 void generacija(deque<data>& temp);
 void skirstymas(deque<data>& temp,deque<data>& temp2);
-
+bool maziau(const data& temp);
 
 
 

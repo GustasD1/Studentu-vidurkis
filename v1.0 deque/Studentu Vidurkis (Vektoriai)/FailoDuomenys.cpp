@@ -15,7 +15,6 @@ void skaitymas(deque<data>& temp) {
 	fd.close();
 
 
-	getline(buf, eil);
 	data laik;
 	while (getline(buf, eil)) {
 		bool error = false;
@@ -119,18 +118,12 @@ void skirstymas(deque<data>& temp, deque<data>& temp2) {
 	for (int i = 0; i < n; i++) {
 
 		if (temp[i].rezultatas < 5.0) {
-			laik.vardas = "Vardas" + std::to_string(i + 1);
-			laik.pavarde = "Pavarde" + std::to_string(i + 1);
-			laik.rezultatas = temp[i].rezultatas;
-			laik.rezultatasm = temp[i].rezultatasm;
-			temp2.push_back(laik);		
+			temp2.push_back(temp[i]);
 		}
 	}
-	for (int i = 0; i < n; i++) {
-		if (temp[i].rezultatas < 5.0) {
-			temp.erase(temp.begin() + i, temp.begin() + i );
-			n--;
-			temp.resize(n);
-		}
-	}
+
+	temp.erase(std::remove_if(temp.begin(), temp.end(), maziau), temp.end());
+}
+bool maziau(const data& temp) {
+	return temp.rezultatas < 5.0;
 }

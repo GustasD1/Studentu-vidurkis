@@ -15,7 +15,7 @@ void skaitymas(vector<data>& temp);
 void FailoIsvedimas(vector<data>& temp, vector<data>& temp2);
 void generacija(vector<data>& temp);
 void skirstymas(vector<data>& temp, vector<data>& temp2);
-
+bool maziau(const data& temp);
 
 
 

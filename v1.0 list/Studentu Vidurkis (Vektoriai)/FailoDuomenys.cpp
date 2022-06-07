@@ -15,7 +15,6 @@ void skaitymas(list<data>& temp) {
 	fd.close();
 
 
-	getline(buf, eil);
 	data laik;
 	while (getline(buf, eil)) {
 		bool error = false;
@@ -114,18 +113,12 @@ void skirstymas(list<data>& temp, list<data>& temp2) {
 	for (it = temp.begin(); it != temp.end(); it++) {
 
 		if (it->rezultatas < 5.0) {
-
-			laik.vardas = it->vardas;
-			laik.pavarde = it->pavarde;
-			laik.rezultatas = it->rezultatas;
-			laik.rezultatasm = it->rezultatasm;
-			temp2.push_back(laik);
+			temp2.push_back(*it);
 
 		}
 	}
-	temp.erase(std::remove_if(temp.begin(), temp.end(), [&](data const& laik2) {
-			return laik2.rezultatas < 5.00;
-			}),
-		temp.end());
-	
+	temp.erase(std::remove_if(temp.begin(), temp.end(), maziau), temp.end());
+}
+bool maziau(const data& temp) {
+	return temp.rezultatas < 5.0;
 }
